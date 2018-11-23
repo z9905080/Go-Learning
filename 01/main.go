@@ -10,15 +10,15 @@ import (
 )
 
 func main() {
-	GetMachineGame("123456")
+	GetMachineGame("2")
 }
 
 // GetMachineGame 取得機率遊戲
-func GetMachineGame(MID string) ErrorCode {
+func GetMachineGame(MID string) (ErrorCode, error) {
 
 	data := getMachineGame(MID)
 	if len(data) == 0 {
-		return DataEmpty
+		return DataEmpty, nil
 	}
 
 	var totalBalanceInGame float64
@@ -35,18 +35,21 @@ func GetMachineGame(MID string) ErrorCode {
 				if parent != 0 {
 					totalBalanceInGame += item.Balance / float64(parent) * float64(child)
 				}
+			} else if err1 != nil {
+				return BetBaseWrong, err1
 			} else {
-				return BetBaseWrong
+				return BetBaseWrong, err2
 			}
+
 		} else {
-			return BetBaseEmpty
+			return BetBaseEmpty, nil
 		}
 	}
 	if totalBalanceInGame > 0 {
-		return OK
+		return OK, nil
 	}
 
-	return DataEmpty
+	return DataEmpty, nil
 }
 
 // getMachineGame 取機台機率的餘額
@@ -55,31 +58,44 @@ func GetMachineGame(MID string) ErrorCode {
 // case3 : BetBase可能為空字串
 func getMachineGame(UserID string) []MachineInfo {
 
-	//case1 : 可能select 不到資料
-	//machineInfo := []MachineInfo{}
-
-	// GameDB5 := GetDBConnect("GameDB5")
-
-	// case2 [正確值]
 	machineInfo := []MachineInfo{
 		MachineInfo{
 			BetBase: "100:1",
 			Balance: 123,
-			UserID:  1001,
-		}}
+			UserID:  1,
+		},
+		MachineInfo{
+			BetBase: "100:1",
+			Balance: 123,
+			UserID:  2,
+		},
+		MachineInfo{
+			BetBase: "100:",
+			Balance: 123,
+			UserID:  2,
+		},
+		MachineInfo{
+			BetBase: "",
+			Balance: 123,
+			UserID:  3,
+		},
+	}
 
-	//case3 BetBase為空
-	// machineInfo := []MachineInfo{
-	// 	MachineInfo{
-	// 		BetBase: "",
-	// 		Balance: 123,
-	// 		UserID:  1001,
-	// 	}}
+	var newMachineInfo []MachineInfo
+	iUserID, err := strconv.Atoi(UserID)
+	if err == nil {
+		for _, value := range machineInfo {
+			if value.UserID == iUserID {
+				newMachineInfo = append(newMachineInfo, value)
+			}
+		}
+	}
 
-	//fmt.Println(machineInfo[0])
+	//fmt.Println(newMachineInfo)
+
 	// GameDB5.Select("BetBase, Balance, UserID").Where("UserID = ?", UserID).Table("MachineInfo").Find(&machineInfo)
 
-	return machineInfo
+	return newMachineInfo
 }
 
 // MachineInfo 機率遊戲的欄位

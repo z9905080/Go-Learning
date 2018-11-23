@@ -5,7 +5,14 @@ import (
 )
 
 func TestGetMachineGame(t *testing.T) {
-	returnCode := GetMachineGame("0")
+	//case 1 2 3 4
+	var input string
+	//input = "1" //OK
+	//input = "2" //BetBaseWrong
+	//input = "3" //BetBaseEmpty
+	//input = "4" //DataEmpty
+
+	returnCode, err := GetMachineGame(input)
 
 	switch returnCode {
 	case DataEmpty:
@@ -14,6 +21,7 @@ func TestGetMachineGame(t *testing.T) {
 		t.Error("Bet字串為空值, Code:" + BetBaseEmpty.String())
 	case BetBaseWrong:
 		t.Error("Bet字串有問題, Code:" + BetBaseWrong.String())
+		t.Error(err.Error())
 	case OK:
 		t.Log("GetMachineGame OK!")
 	}
