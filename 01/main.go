@@ -3,7 +3,6 @@ package main
 /*
 	請寫出對於method : GetMachineGame 的測試
 */
-
 import (
 	"strconv"
 	"strings"
