@@ -1,5 +1,8 @@
 package main
 
+/*
+   請寫出對於method : GetMachineGame 的測試
+*/
 import (
 	"strconv"
 	"strings"
@@ -55,22 +58,22 @@ func GetMachineGame(MID string) (ErrorCode, error) {
 func getMachineGame(UserID string) []MachineInfo {
 
 	machineInfo := []MachineInfo{
-		MachineInfo{
+		{
 			BetBase: "100:1",
 			Balance: 123,
 			UserID:  1,
 		},
-		MachineInfo{
+		{
 			BetBase: "100:1",
 			Balance: 123,
 			UserID:  2,
 		},
-		MachineInfo{
+		{
 			BetBase: "100:",
 			Balance: 123,
 			UserID:  2,
 		},
-		MachineInfo{
+		{
 			BetBase: "",
 			Balance: 123,
 			UserID:  3,

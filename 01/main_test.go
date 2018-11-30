@@ -7,7 +7,7 @@ import (
 func TestGetMachineGame(t *testing.T) {
 	//case 1 2 3 4
 	var input string
-	//input = "1" //OK
+	input = "1" //OK
 	//input = "2" //BetBaseWrong
 	//input = "3" //BetBaseEmpty
 	//input = "4" //DataEmpty
