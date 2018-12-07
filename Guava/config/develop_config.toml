@@ -1,0 +1,28 @@
+title = "sys_config"
+
+[redis.publish]
+ip = "10.251.38.155"
+host = ""
+port = "9526"
+channel = "wsmsg"
+
+[redis.member.master]
+ip = "10.251.38.155"
+host = ""
+port = "9526"
+
+[redis.member.slave]
+ip = "10.251.38.155"
+host = ""
+port = "9526"
+
+[web]
+port = "8888"
+
+[api.durian]
+ip = "10.251.37.101"
+host = "bb.dev.d2"
+port = "80"
+
+[maxlink]
+max = 10

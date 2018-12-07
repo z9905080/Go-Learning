@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>WebSocket</title>
+</head>
+
+<body>
+  <p id="output"></p>
+  <!--<form>-->
+  <!--User ID: <input type="text" id="MEM">-->
+  <!--</form>-->
+  <form>
+  SID: <input type="text" id="SID">
+  </form>
+  <!--<form>-->
+  <!--HALL: <input type="text" id="HALL">-->
+  <!--</form>-->
+  <!--<form>-->
+  <!--SC: <input type="text" id="SC">-->
+  <!--</form>-->
+  <!--<form>-->
+  <!--CO: <input type="text" id="C">-->
+  <!--</form>-->
+  <!--<form>-->
+  <!--SA: <input type="text" id="SA">-->
+  <!--</form>-->
+  <!--<form>-->
+  <!--AG: <input type="text" id="A">-->
+  <!--</form>-->
+  <form>
+  LV: <input type="text" id="LV">
+  </form>
+<input type="button" value="Send" onclick="SendWS()">
+
+
+  <script>
+    var loc = window.location;
+    var uri = 'ws:';
+
+    if (loc.protocol === 'https:') {
+      uri = 'wss:';
+    }
+    uri += '//' + loc.host;
+    uri += '/guava/ws';
+    console.log(uri)
+    ws = new WebSocket(uri)
+
+    ws.onopen = function() {
+      console.log('Connected')
+    }
+
+    ws.onmessage = function(evt) {
+      var out = document.getElementById('output');
+      out.innerHTML += evt.data + '<br>';
+    }
+
+    function SendWS(){
+      //var mem=document.getElementById("MEM").value;
+      var sid=document.getElementById("SID").value;
+      //var hall=document.getElementById("HALL").value;
+      //var sc=document.getElementById("SC").value;
+      //var co=document.getElementById("C").value;
+      //var sa=document.getElementById("SA").value;
+      //var ag=document.getElementById("A").value;
+      var lv=document.getElementById("LV").value;
+      //ws.send('{"MEM":"' + mem + '","SID":"' + sid + '","HALL":"' + hall + '","SC":"' + sc + '","C":"' + co + '","SA":"' + sa + '","A":"' + ag + '","LV":"' + lv + '"}');
+      ws.send('{"SID":"' + sid + '","LV":"' + lv + '"}');
+    }
+    //setInterval(function() {
+    //  ws.send('{"MEM":"1234","SID":"d1fbc4dbb58687057eb78d77c4004991278c06e4","HALL":"6","SC":"5678","CO":"5678","SA":"5678","AG":"5678","LV":"1"}');
+    //}, 1000);
+  </script>
+</body>
+
+</html>

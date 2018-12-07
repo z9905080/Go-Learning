@@ -1,0 +1,28 @@
+title = "sys_config"
+
+[redis.publish]
+ip = "127.0.0.1"
+host = "localhost"
+port = "6379"
+channel = "wsmsg"
+
+[redis.member.master]
+ip = "127.0.0.1"
+host = "localhost"
+port = "6379"
+
+[redis.member.slave]
+ip = "127.0.0.1"
+host = "localhost"
+port = "6379"
+
+[web]
+port = "8888"
+
+[api.durian]
+ip = "10.251.31.143"
+host = "bb.dev.d2"
+port = "80"
+
+[maxlink]
+max = 3
