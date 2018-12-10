@@ -1,0 +1,121 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "rcoUTEGR7KVr963l6P1rlMaYCzA=",
+			"path": "github.com/BurntSushi/toml",
+			"revision": "3012a1dbe2e4bd1391d42b32f0577cb7bbc7f005",
+			"revisionTime": "2018-08-15T10:47:33Z"
+		},
+		{
+			"checksumSHA1": "q3w0WrlEQQS2rDFKOsA5xfNa54U=",
+			"path": "github.com/dgrijalva/jwt-go",
+			"revision": "3af4c746e1c248ee8491a3e0c6f7a9cd831e95f8",
+			"revisionTime": "2018-09-21T17:23:15Z"
+		},
+		{
+			"checksumSHA1": "6X3O3mfvOyiwV2iAb5GjxARs08c=",
+			"path": "github.com/garyburd/redigo/internal",
+			"revision": "569eae59ada904ea8db7a225c2b47165af08735a",
+			"revisionTime": "2018-04-04T16:07:26Z"
+		},
+		{
+			"checksumSHA1": "TRsWhl8gX4p8xoErljH/oyNmY5M=",
+			"path": "github.com/garyburd/redigo/redis",
+			"revision": "569eae59ada904ea8db7a225c2b47165af08735a",
+			"revisionTime": "2018-04-04T16:07:26Z"
+		},
+		{
+			"checksumSHA1": "sA1VIJq0nbR93YT8AFIgACSK2Lc=",
+			"path": "github.com/gorilla/websocket",
+			"revision": "95ba29eb981bbb27d92e1f70bf8a1949452d926b",
+			"revisionTime": "2018-12-06T07:02:39Z"
+		},
+		{
+			"checksumSHA1": "oI8VjHg2bqbXOXh6zGnvrMi1OiA=",
+			"path": "github.com/labstack/echo",
+			"revision": "3f8b45c8d0dd840198a6b24b3393e5ec553dcb85",
+			"revisionTime": "2018-12-05T16:13:48Z"
+		},
+		{
+			"checksumSHA1": "l/UJi2F4qKPOlUTO2RKHOY41BZc=",
+			"path": "github.com/labstack/echo/middleware",
+			"revision": "3f8b45c8d0dd840198a6b24b3393e5ec553dcb85",
+			"revisionTime": "2018-12-05T16:13:48Z"
+		},
+		{
+			"checksumSHA1": "67WgYXAaI1iIhE2srTDfjXxUs7Q=",
+			"path": "github.com/labstack/gommon/bytes",
+			"revision": "7fd9f68ece0bcb1a905fac8f1549f0083f71c51b",
+			"revisionTime": "2018-11-10T20:33:03Z"
+		},
+		{
+			"checksumSHA1": "Yz8nRvgJR9qN9OORCUQKc4eHC7Q=",
+			"path": "github.com/labstack/gommon/color",
+			"revision": "7fd9f68ece0bcb1a905fac8f1549f0083f71c51b",
+			"revisionTime": "2018-11-10T20:33:03Z"
+		},
+		{
+			"checksumSHA1": "aPI7uE0fQNHFKVLP1pIY1fktoec=",
+			"path": "github.com/labstack/gommon/log",
+			"revision": "7fd9f68ece0bcb1a905fac8f1549f0083f71c51b",
+			"revisionTime": "2018-11-10T20:33:03Z"
+		},
+		{
+			"checksumSHA1": "JHmNB8lB6bAa9143TpXSRZknn0o=",
+			"path": "github.com/labstack/gommon/random",
+			"revision": "7fd9f68ece0bcb1a905fac8f1549f0083f71c51b",
+			"revisionTime": "2018-11-10T20:33:03Z"
+		},
+		{
+			"checksumSHA1": "AtXpiR7Gtq5cF+6eUAH+LzupMts=",
+			"path": "github.com/mattn/go-colorable",
+			"revision": "efa589957cd060542a26d2dd7832fd6a6c6c3ade",
+			"revisionTime": "2018-03-10T13:32:14Z"
+		},
+		{
+			"checksumSHA1": "LkbotKu3JQxXEZZ9P40yhnFOycY=",
+			"path": "github.com/mattn/go-isatty",
+			"revision": "3fb116b820352b7f0c281308a4d6250c22d94e27",
+			"revisionTime": "2018-08-30T10:17:45Z"
+		},
+		{
+			"checksumSHA1": "mpvacCaM6ULfXz4womWAPmtXzpU=",
+			"path": "github.com/subosito/gotenv",
+			"revision": "69b5b6104433beb2cb9c3ce00bdadf3c7c2d3f34",
+			"revisionTime": "2018-06-05T02:01:30Z"
+		},
+		{
+			"checksumSHA1": "Y9MRcpDNz4epw59SqGPmnW+ADKk=",
+			"path": "github.com/valyala/bytebufferpool",
+			"revision": "cdfbe9377474227bb42120c1e22fd4433e7f69bf",
+			"revisionTime": "2018-09-05T18:22:47Z"
+		},
+		{
+			"checksumSHA1": "UHztphFBVZKyLNbrMDVPM0VdJ60=",
+			"path": "github.com/valyala/fasttemplate",
+			"revision": "dcecefd839c4193db0d35b88ec65b4c12d360ab0",
+			"revisionTime": "2017-02-24T21:24:29Z"
+		},
+		{
+			"checksumSHA1": "ETfjuu5F8ejF27iatik4uPga2VQ=",
+			"path": "golang.org/x/crypto/acme",
+			"revision": "505ab145d0a99da450461ae2c1a9f6cd10d1f447",
+			"revisionTime": "2018-09-26T22:07:39Z"
+		},
+		{
+			"checksumSHA1": "Yjacru/DE9yXphaefh67NrjNgAk=",
+			"path": "golang.org/x/crypto/acme/autocert",
+			"revision": "505ab145d0a99da450461ae2c1a9f6cd10d1f447",
+			"revisionTime": "2018-09-26T22:07:39Z"
+		},
+		{
+			"checksumSHA1": "kKuB1uPMgdvylnqWe7MKJPRtp2w=",
+			"path": "golang.org/x/sys/unix",
+			"revision": "70b957f3b65e069b4930ea94e2721eefa0f8f695",
+			"revisionTime": "2018-12-01T15:49:00Z"
+		}
+	],
+	"rootPath": "Go-Learning/Guava"
+}

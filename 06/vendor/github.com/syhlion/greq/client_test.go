@@ -3,6 +3,7 @@ package greq
 import (
 	"bytes"
 	"encoding/base64"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
@@ -104,6 +105,7 @@ func basicAuthHandler(w http.ResponseWriter, r *http.Request) {
 	auth := r.Header.Get("Authorization")
 	if strings.HasPrefix(auth, basicAuthPrefix) {
 		payload, err := base64.StdEncoding.DecodeString(auth[len(basicAuthPrefix):])
+		fmt.Println(auth)
 		if err == nil {
 			pair := bytes.SplitN(payload, []byte(":"), 2)
 			if len(pair) == 2 && bytes.Equal(pair[0], []byte("scott")) && bytes.Equal(pair[1], []byte("fine")) {
@@ -181,6 +183,16 @@ func TestGet(t *testing.T) {
 	//Test Fail
 	v = url.Values{}
 	v.Set("key", "Fail")
+	data, s, _ = client.Get(ts.URL, v)
+	if s == http.StatusOK {
+		t.Fatalf("status fatal:%d ,body:%s", s, string(data))
+	}
+	if string(data) == "success" {
+		t.Fatal("body fatal :", string(data))
+	}
+
+	//Test Empty
+	v = url.Values{}
 	data, s, _ = client.Get(ts.URL, v)
 	if s == http.StatusOK {
 		t.Fatalf("status fatal:%d ,body:%s", s, string(data))

@@ -1,15 +1,16 @@
 package main
 
 import (
+	API "Go-Learning/Guava/guavaAPI"
+	guava "Go-Learning/Guava/guavaStruct"
 	DurianApi "bbin/kernel/api"
+
 	"encoding/json"
 	"fmt"
 	"os"
 	"sync"
 	"time"
 
-	"./api"
-	"./struct"
 	"github.com/BurntSushi/toml"
 	"github.com/garyburd/redigo/redis"
 	"github.com/gorilla/websocket"

@@ -2,6 +2,8 @@ package requestwork
 
 import (
 	"context"
+	"fmt"
+	"net"
 	"net/http"
 	"net/url"
 	"time"
@@ -29,6 +31,7 @@ func New(threads int) *Worker {
 	tr := &http.Transport{
 		Proxy:               NoProxyAllowed,
 		MaxIdleConnsPerHost: threads * DefaultMaxIdleConnPerHost,
+		Dial:                PrintLocalDial,
 	}
 	client := &http.Client{
 		Transport: tr,
@@ -44,6 +47,22 @@ func New(threads int) *Worker {
 	go w.start()
 	return w
 
+}
+
+func PrintLocalDial(network, addr string) (net.Conn, error) {
+	dial := net.Dialer{
+		Timeout:   30 * time.Second,
+		KeepAlive: 30 * time.Second,
+	}
+
+	conn, err := dial.Dial(network, addr)
+	if err != nil {
+		return conn, err
+	}
+
+	fmt.Println("connect done, use", conn.LocalAddr().String())
+
+	return conn, err
 }
 
 //NoProxyAllowed no proxy

@@ -21,6 +21,7 @@ import (
 	requestwork "github.com/syhlion/requestwork.v2"
 )
 
+// Trace 追蹤網路連線資訊結構
 type Trace struct {
 	Url              string        `json:"url"`
 	Method           string        `json:"method"`
@@ -208,6 +209,8 @@ func (c *Client) Put(url string, params url.Values) (data []byte, httpstatus int
 	req, err := http.NewRequest(http.MethodPut, url, strings.NewReader(params.Encode()))
 	return c.resolveRequest(req, params, err)
 }
+
+//PutWithOnceHeader http method put
 func (c *Client) PutWithOnceHeader(url string, params url.Values, headers map[string]string) (data []byte, httpstatus int, err error) {
 	req, err := http.NewRequest(http.MethodPost, url, strings.NewReader(params.Encode()))
 	if err != nil {
@@ -225,6 +228,8 @@ func (c *Client) Delete(url string, params url.Values) (data []byte, httpstatus 
 	req, err := http.NewRequest(http.MethodDelete, url, strings.NewReader(params.Encode()))
 	return c.resolveRequest(req, params, err)
 }
+
+//DeleteWithOnceHeader http method Delete
 func (c *Client) DeleteWithOnceHeader(url string, params url.Values, headers map[string]string) (data []byte, httpstatus int, err error) {
 	req, err := http.NewRequest(http.MethodPost, url, strings.NewReader(params.Encode()))
 	if err != nil {
@@ -380,6 +385,7 @@ func (c *Client) resolveRequest(req *http.Request, params url.Values, e error) (
 	ctx, cancel := context.WithTimeout(context.Background(), c.timeout)
 
 	defer cancel()
+
 	c.resolveHeaders(req)
 
 	switch req.Method {

@@ -26,6 +26,7 @@ func main() {
 			os.Exit(2)
 		}
 	}
+	//time.Sleep(2 * time.Second)
 	log.Println("...任务执行结束...")
 }
 
