@@ -7,19 +7,22 @@ import (
 	"time"
 )
 
+//ErrTimeOut 工作逾時
 var ErrTimeOut = errors.New("工作時程逾時")
+
+//ErrInterrupt 工作打斷
 var ErrInterrupt = errors.New("工作已被打斷")
 
-//一个执行者，可以执行任何任务，但是这些任务是限制完成的，
-//该执行者可以通过发送终止信号终止它
+//Runner ，可排程執行工作，而且可以控制
 type Runner struct {
-	tasks     []func(int)      //要执行的任务
-	complete  chan error       //用于通知任务全部完成
-	timeout   <-chan time.Time //这些任务在多久内完成
-	interrupt chan os.Signal   //可以控制强制终止的信号
+	tasks     []func(int)      //func array to Do
+	complete  chan error       //通知任務完成
+	timeout   <-chan time.Time //所有任務最終的TimeOut
+	interrupt chan os.Signal   //控制強制中止的訊號
 
 }
 
+// New 建構子
 func New(tm time.Duration) *Runner {
 	return &Runner{
 		complete:  make(chan error),
@@ -28,13 +31,12 @@ func New(tm time.Duration) *Runner {
 	}
 }
 
-//将需要执行的任务，添加到Runner里
+//Add (public)將要執行的工作添加到Runner準備執行
 func (r *Runner) Add(tasks ...func(int)) {
 	r.tasks = append(r.tasks, tasks...)
 }
 
-//执行任务，执行的过程中接收到中断信号时，返回中断错误
-//如果任务全部执行完，还没有接收到中断信号，则返回nil
+//run (private)開始執行工作，除非中斷否則會執行到沒有工作
 func (r *Runner) run() error {
 	for id, task := range r.tasks {
 		if r.isInterrupt() {
@@ -45,7 +47,7 @@ func (r *Runner) run() error {
 	return nil
 }
 
-//检查是否接收到了中断信号
+//isInterrupt (private)檢查是否收到中斷訊號 ex:Ctrl + C
 func (r *Runner) isInterrupt() bool {
 	select {
 	case <-r.interrupt:
@@ -56,7 +58,7 @@ func (r *Runner) isInterrupt() bool {
 	}
 }
 
-//开始执行所有任务，并且监视通道事件
+//Start (public)開始執行工作，並監聽中斷事件
 func (r *Runner) Start() error {
 	//希望接收哪些系统信号
 	signal.Notify(r.interrupt, os.Interrupt)
